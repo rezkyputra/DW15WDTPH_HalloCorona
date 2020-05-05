@@ -1,18 +1,45 @@
 import React, { Component } from "react";
-import { Jumbotron, Button } from "react-bootstrap";
+import { Jumbotron, Button, Row, Col } from "react-bootstrap";
+import House from "../icon/House.png";
+import Hand from "../icon/Hand.png";
+import Eyes from "../icon/Eyes.png";
+import Crowd from "../icon/Crowd.png";
+import Corona from "../icon/corona.png";
 
 class header extends Component {
   render() {
     return (
-      <Jumbotron>
-        <h1>Hello, world!</h1>
-        <p>
-          This is a simple hero unit, a simple jumbotron-style component for
-          calling extra attention to featured content or information.
-        </p>
-        <p>
-          <Button variant="primary">Learn more</Button>
-        </p>
+      <Jumbotron className="bg-info">
+        <Row>
+          <Col sm={2}>
+            <img src={Corona} />
+          </Col>
+          <Col sm={2}>
+            <h3 className="text-light">
+              <b>CEGAH Covid-19</b>
+            </h3>
+            <p className="text-light">Dengan Melakukan</p>
+            <p>
+              <Button variant="dark">Consultasi Dokter</Button>
+            </p>
+          </Col>
+
+          <Col sm={1.5}>
+            <img src={Crowd} />
+          </Col>
+
+          <Col sm={1.5}>
+            <img src={Eyes} />
+          </Col>
+
+          <Col sm={1.5}>
+            <img src={Hand} />
+          </Col>
+
+          <Col sm={1.5}>
+            <img src={House} />
+          </Col>
+        </Row>
       </Jumbotron>
     );
   }

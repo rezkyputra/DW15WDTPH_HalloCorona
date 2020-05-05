@@ -44,7 +44,6 @@ class addArticle extends Component {
               type="text"
               value={this.state.value}
               onChange={this.handleChange}
-              placeholder="name@example.com"
             />
           </Form.Group>
           <Form.Group>

@@ -70,14 +70,17 @@ class modalLogin extends Component {
     try {
       event.preventDefault();
       await API.post("/signup", this.state.data).then((res) => {
-        const token = res.data.data.token;
-        const role = res.data.data.role;
-        localStorage.setItem("token", token);
-        if (role === 1) {
-          window.location.href = "/dokter";
-        } else {
-          window.location.href = "/pasien";
-        }
+        // const token = res.data.data.token;
+        // const role = res.data.data.role;
+        // const id = res.data.data.id;
+        // localStorage.setItem("token", token);
+        // localStorage.setItem("id", id);
+        this.setState({ showSignUp: false });
+        // if (role === 1) {
+        //   window.location.href = "/dokter";
+        // } else {
+        //   window.location.href = "/pasien";
+        // }
       });
     } catch (error) {
       console.log(error);
@@ -89,7 +92,7 @@ class modalLogin extends Component {
       <>
         {/* Sign In */}
         <Button
-          variant="primary"
+          variant="outline-dark"
           onClick={this.handleSignInShow}
           className="mr-1"
         >
@@ -152,7 +155,7 @@ class modalLogin extends Component {
 
         {/* SignUp */}
         <Button
-          variant="primary"
+          variant="outline-info"
           onClick={() => {
             this.setState({
               showSignUp: true,

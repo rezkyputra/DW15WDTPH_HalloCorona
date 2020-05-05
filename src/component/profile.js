@@ -58,7 +58,7 @@ class profile extends Component {
                   src="https://www.w3schools.com/howto/img_forest.jpg"
                 />
                 <Button block className="mt-3">
-                  Cahnge Password
+                  Change Password
                 </Button>
               </Col>
             </Row>

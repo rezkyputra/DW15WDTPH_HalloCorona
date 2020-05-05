@@ -23,7 +23,10 @@ class content extends Component {
     if (loading) return <Spinner animation="border" variant="primary" />;
     return (
       <Container>
-        <Row>
+        <h1 className="text-info m-4" style={{ textAlign: "center" }}>
+          Artikel Hari Ini
+        </h1>
+        <Row className="mb-5">
           {ArData.length > 0 &&
             ArData.map((ardata, index) => (
               <Col md={4}>
