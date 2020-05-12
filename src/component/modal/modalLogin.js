@@ -68,24 +68,24 @@ class modalLogin extends Component {
   };
 
   handleSubmitSignUp = async (event) => {
-    // try {
-    //   event.preventDefault();
-    //   await API.post("/signup", this.state.data).then((res) => {
-    //     const token = res.data.data.token;
-    //     const role = res.data.data.role;
-    //     const id = res.data.data.id;
-    //     localStorage.setItem("token", token);
-    //     localStorage.setItem("id", id);
-    //     this.setState({ showSignUp: false });
-    //     if (role < 2) {
-    //       window.location.href = "/dokter";
-    //     } else {
-    //       window.location.href = "/pasien";
-    //     }
-    //   });
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      event.preventDefault();
+      await API.post("/signup", this.state.data).then((res) => {
+        // const token = res.data.data.token;
+        // const role = res.data.data.role;
+        // const id = res.data.data.id;
+        // localStorage.setItem("token", token);
+        // localStorage.setItem("id", id);
+        // this.setState({ showSignUp: false });
+        // if (role < 2) {
+        //   window.location.href = "/dokter";
+        // } else {
+        //   window.location.href = "/pasien";
+        // }
+      });
+    } catch (error) {
+      console.log(error);
+    }
     try {
       event.preventDefault();
       await API.post("/signup", this.state.data).then((res) => {
