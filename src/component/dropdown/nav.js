@@ -1,32 +1,57 @@
 import React, { Component } from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, NavDropdown, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Icon } from "../../icon/Icon.png";
+import Logo from "../../icon/Icon.png";
 
 class nav extends Component {
+  logOut = () => {
+    // const data = "false";
+    // const status = "Patient";
+    // const token = null;
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    localStorage.removeItem("role");
+  };
   render() {
     return (
       <div>
-        <Navbar bg="light" expand="lg">
-          <Navbar.Brand className="justify-content-start">
-            <img src={Icon} />
+        <Navbar bg="light">
+          <Navbar.Brand>
+            <Link to={`/pasien`}>
+              <img src={Logo} />
+            </Link>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse className="justify-content-end">
-            <Nav className="mr-auto">
-              <Nav.Link>
-                <Link to={`/Pasien`}>Home</Link>
-              </Nav.Link>
-              <Nav.Link>
+            <NavDropdown
+              className="m-0"
+              title={
+                <div>
+                  <Image
+                    src="https://image.flaticon.com/icons/png/512/16/16480.png"
+                    width="50px"
+                    roundedCircle
+                  />
+                </div>
+              }
+              id="basic-nav-dropdown"
+            >
+              <NavDropdown.Item>
                 <Link to={`/pasien/profile`}>Profile</Link>
-              </Nav.Link>
-              <Nav.Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
                 <Link to={`/pasien/consultation`}>Consultation</Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link to={`/`}>Logout</Link>
-              </Nav.Link>
-            </Nav>
+              </NavDropdown.Item>
+
+              <NavDropdown.Item>
+                <Link to={`/pasien/consultation`}>Consultation</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item>
+                <Link onClick={this.logOut} to={`/`} className="text-danger">
+                  Logout
+                </Link>
+              </NavDropdown.Item>
+            </NavDropdown>
           </Navbar.Collapse>
         </Navbar>
       </div>

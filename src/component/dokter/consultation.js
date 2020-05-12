@@ -1,12 +1,17 @@
 import React, { Component } from "react";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Modal } from "react-bootstrap";
 import { API, setAuthToken } from "../../config/api";
+import { FaSearch } from "react-icons/fa";
+import moment from "moment";
+import Reply from "./reply";
 
-class tabel extends Component {
+class consultation extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
+      selectedId: "",
+      popUp: false,
     };
   }
 
@@ -26,40 +31,81 @@ class tabel extends Component {
     this.getData();
   }
 
+  popUpShow = (isShowed) => {
+    this.setState({ popUp: isShowed });
+  };
+
   render() {
-    console.log(this.state.data);
+    // console.log(this.state.data);
     return (
       <div>
-        <h1>Consultation Data</h1>
-        <Table responsive>
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Users</th>
-              <th>Subject</th>
-              <th>Date of complaint</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.data.map((value, index) => (
+        <div className="bg-light m-5" style={{ border: "5px inset white" }}>
+          <h1 className="my-4">Consultation Data</h1>
+          <Table responsive>
+            <thead>
               <tr>
-                <td>{index + 1}</td>
-                <td>{value.fullname}</td>
-                <td>{value.subject}</td>
-                <td>{value.createdAt}</td>
-                <td>{value.status}</td>
-                <td>
-                  <Button>Detail</Button>
-                </td>
+                <th>No</th>
+                <th>Users</th>
+                <th>Subject</th>
+                <th>Date of complaint</th>
+                <th>Status</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {this.state.data.map((value, index) => (
+                <tr>
+                  <td>{index + 1}</td>
+                  <td>{value.fullname}</td>
+                  <td>{value.subject}</td>
+                  <td>{moment(value.createdAt).format("DD MMMM YYYY")}</td>
+                  <td>
+                    {value.status == "waiting approve consultation live" ? (
+                      <span className="text-primary">
+                        <b>Waiting Approve Consultation Live</b>
+                      </span>
+                    ) : value.status == "waiting live consultation" ? (
+                      <span className="text-success">
+                        <b>Waiting Live Consultation</b>
+                      </span>
+                    ) : (
+                      <span className="text-danger">
+                        <b>Cancel</b>
+                      </span>
+                    )}
+                  </td>
+                  <td>
+                    <Button
+                      onClick={() => {
+                        this.setState({
+                          popUp: true,
+                          selectedId: value,
+                        });
+                      }}
+                    >
+                      {/* onClick={(this.popUpShow, selectedId:value)} */}
+                      <FaSearch />
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+            <Modal
+              show={this.state.popUp}
+              onHide={() => this.popUpShow(false)}
+              size="lg"
+              centered
+            >
+              <Modal.Header closeButton></Modal.Header>
+              <Modal.Body className="action-area">
+                <Reply item={this.state.selectedId} />
+              </Modal.Body>
+            </Modal>
+          </Table>
+        </div>
       </div>
     );
   }
 }
 
-export default tabel;
+export default consultation;

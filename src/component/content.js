@@ -20,7 +20,16 @@ class content extends Component {
     const { data: ArData, loading, error } = this.props.article;
 
     if (error) return <h1>There's unknown error</h1>;
-    if (loading) return <Spinner animation="border" variant="primary" />;
+    if (loading)
+      return (
+        <div>
+          <Spinner
+            style={{ padding: "auto" }}
+            animation="border"
+            variant="primary"
+          />
+        </div>
+      );
     return (
       <Container>
         <h1 className="text-info m-4" style={{ textAlign: "center" }}>

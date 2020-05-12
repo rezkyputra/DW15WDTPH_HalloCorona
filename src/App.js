@@ -3,6 +3,10 @@ import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
+// Route
+import DokterRoute from "./routes/Dokterroute";
+import PasienRoute from "./routes/pasienRoute";
+
 //home
 import Index from "./page/index";
 import Detail from "./page/detail";
@@ -24,18 +28,26 @@ class App extends Component {
         <Router>
           <Switch>
             {/* Pasien */}
-            <Route
+            <PasienRoute
               exact
               path="/pasien/consultation"
               component={pasienConsultation}
             />
-            <Route exact path="/pasien/profile" component={pasienProfile} />
-            <Route exact path="/pasien" component={Pasien} />
+            <PasienRoute
+              exact
+              path="/pasien/profile"
+              component={pasienProfile}
+            />
+            <PasienRoute exact path="/pasien" component={Pasien} />
 
             {/* Dokter */}
-            <Route exact path="/dokter/artikel" component={addarticle} />
-            <Route exact path="/dokter/profile" component={dokterprofile} />
-            <Route exact path="/dokter" component={Dokter} />
+            <DokterRoute exact path="/dokter/artikel" component={addarticle} />
+            <DokterRoute
+              exact
+              path="/dokter/profile"
+              component={dokterprofile}
+            />
+            <DokterRoute exact path="/dokter" component={Dokter} />
 
             {/* Index */}
             <Route exact path="/detail/:id" component={Detail} />
