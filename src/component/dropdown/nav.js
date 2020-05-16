@@ -5,12 +5,9 @@ import Logo from "../../icon/Icon.png";
 
 class nav extends Component {
   logOut = () => {
-    // const data = "false";
-    // const status = "Patient";
-    // const token = null;
     localStorage.removeItem("token");
-    localStorage.removeItem("id");
     localStorage.removeItem("role");
+    localStorage.removeItem("id");
   };
   render() {
     return (
@@ -42,9 +39,9 @@ class nav extends Component {
                 <Link to={`/pasien/consultation`}>Consultation</Link>
               </NavDropdown.Item>
 
-              <NavDropdown.Item>
+              {/* <NavDropdown.Item>
                 <Link to={`/pasien/consultation`}>Consultation</Link>
-              </NavDropdown.Item>
+              </NavDropdown.Item> */}
               <NavDropdown.Divider />
               <NavDropdown.Item>
                 <Link onClick={this.logOut} to={`/`} className="text-danger">

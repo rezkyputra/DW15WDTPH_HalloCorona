@@ -22,11 +22,11 @@ class profile extends Component {
     return (
       <Container className="mt-3">
         <Row>
-          <Col className="bg-light" md={{ span: 8, offset: 2 }}>
+          <Col md={{ span: 8, offset: 2 }}>
             <Row>
               <Col>
                 <Form>
-                  <h1>PERSONAL INFO</h1>
+                  <h1 className="text-info mb-3">PERSONAL INFO</h1>
                   <Form.Group>
                     <Form.Label>{`${user.name}`}</Form.Label>
                     <Form.Text className="text-muted">Fullname</Form.Text>
@@ -55,10 +55,10 @@ class profile extends Component {
                 <img
                   width="100%"
                   height="100%"
-                  src="https://www.w3schools.com/howto/img_forest.jpg"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSE_SVGkhj-_C0prhk6AYisSIdpSsWbpfn3rbYKWErcgwg4ke4C&usqp=CAU"
                 />
-                <Button block className="mt-3">
-                  Change Password
+                <Button variant="info" block className="mt-3">
+                  Change Image
                 </Button>
               </Col>
             </Row>

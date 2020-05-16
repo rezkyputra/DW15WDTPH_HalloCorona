@@ -54,7 +54,7 @@ class consultation extends Component {
     return (
       <div>
         <div className="m-5">
-          <h1 className="mb-5">Reservasi Consultasi</h1>
+          <h1 className="text-info mb-5">Reservasi Consultasi</h1>
           <Row>
             <Col>
               <Form onSubmit={this.handleSubmit}>

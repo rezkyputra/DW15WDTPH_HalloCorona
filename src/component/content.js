@@ -50,7 +50,11 @@ class content extends Component {
                     />
                     <Card.Body>
                       <Card.Title>
-                        <p>{`${ardata.title}`}</p>
+                        <p>
+                          {ardata.title.length < 55
+                            ? ardata.title
+                            : ardata.title.substring(0, 50) + "..."}
+                        </p>
                       </Card.Title>
                       <Card.Text className="text-secondary">
                         <small>

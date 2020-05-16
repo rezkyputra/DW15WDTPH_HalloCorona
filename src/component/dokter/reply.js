@@ -24,6 +24,7 @@ const ReplyAction = ({ item }) => {
       await API.post("/consultation/" + item.id + "/reply", {
         response: response,
         consultationId: item.id,
+        userId: item.userId,
       });
       window.location.reload(true);
     } catch (error) {

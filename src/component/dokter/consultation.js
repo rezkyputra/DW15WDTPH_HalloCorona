@@ -24,7 +24,6 @@ class consultation extends Component {
     } catch (error) {
       console.log(error);
     }
-    console.log(this.state);
   };
 
   componentDidMount() {
@@ -39,8 +38,8 @@ class consultation extends Component {
     // console.log(this.state.data);
     return (
       <div>
-        <div className="bg-light m-5" style={{ border: "5px inset white" }}>
-          <h1 className="my-4">Consultation Data</h1>
+        <div className="m-5">
+          <h1 className="my-4 text-info">Consultation Data</h1>
           <Table responsive>
             <thead>
               <tr>
@@ -75,17 +74,22 @@ class consultation extends Component {
                     )}
                   </td>
                   <td>
-                    <Button
-                      onClick={() => {
-                        this.setState({
-                          popUp: true,
-                          selectedId: value,
-                        });
-                      }}
-                    >
-                      {/* onClick={(this.popUpShow, selectedId:value)} */}
-                      <FaSearch />
-                    </Button>
+                    {value.status == "waiting approve consultation live" ? (
+                      <Button
+                        onClick={() => {
+                          this.setState({
+                            popUp: true,
+                            selectedId: value,
+                          });
+                        }}
+                      >
+                        <FaSearch />
+                      </Button>
+                    ) : (
+                      <Button disabled>
+                        <FaSearch />
+                      </Button>
+                    )}
                   </td>
                 </tr>
               ))}

@@ -34,8 +34,8 @@ class addArticle extends Component {
   };
   render() {
     return (
-      <div className="bg-light m-5">
-        <h1>Add Article</h1>
+      <div className="m-5">
+        <h1 className="text-info mb-3">Add Article</h1>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Label>Title</Form.Label>
