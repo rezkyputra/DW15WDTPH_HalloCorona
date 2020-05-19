@@ -25,6 +25,7 @@ const ReplyAction = ({ item }) => {
         response: response,
         consultationId: item.id,
         userId: item.userId,
+        userIdDoc: localStorage.getItem("id"),
       });
       window.location.reload(true);
     } catch (error) {

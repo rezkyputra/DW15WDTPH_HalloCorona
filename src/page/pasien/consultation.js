@@ -12,6 +12,7 @@ class consultation extends Component {
     this.state = {
       data: [],
       dataconsul: [],
+      datauser: [],
     };
   }
 
@@ -24,6 +25,7 @@ class consultation extends Component {
       const resultconsul = await API.get(`/consultation/${id}`);
       this.setState({ dataconsul: resultconsul.data.data });
       this.setState({ data: result.data.data });
+      this.setState({ datauser: result.data.data.userIdDoc });
     } catch (err) {
       console.log(err);
     }
@@ -37,7 +39,7 @@ class consultation extends Component {
     return (
       <div>
         <Navigasi />
-        {this.state.data != null || this.state.dataconsul != null ? (
+        {this.state.dataconsul != null ? (
           <Container className="m-5">
             <Row>
               <Col md={{ span: 9, offset: 1 }}>
